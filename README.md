@@ -6,4 +6,4 @@ Learn lodash API(version 3.10.1), and try to implement it.
 
 2. `$ npm install`
 
-3. `$ gulp`
+3. `$ gulp test`
