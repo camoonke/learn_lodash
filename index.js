@@ -1,12 +1,11 @@
-
-var lodashArray = require('./lib/lodash_array')
-var lodashFunction = require('./lib/lodash_function')
-
 var lodash = function () {
 
 }
 
-var functionArr = [lodashArray, lodashFunction]
+var functionArr = [
+  require('./lib/lodash_array'),
+  require('./lib/lodash_function')
+]
 
 for (var i = 0; i < functionArr.length; i++) {
   for (var functionName in functionArr[i]) {
