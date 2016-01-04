@@ -2,7 +2,7 @@ var lodash = require('../../')
 
 describe('test/lib/lodash_date.test.js', function () {
   it('#now', function () {
-    var t1 = Date.now()
+    var t1 = +new Date()
     var t2
     var t3
 
@@ -10,12 +10,12 @@ describe('test/lib/lodash_date.test.js', function () {
       t2 = lodash.now()
 
       setTimeout(function () {
-        t3 = Date.now()
+        t3 = +new Date()
 
         (t2 - t1).should.above(0)
         (t3 - t2).should.above(0)
-      }, 5)
-    }, 5)
+      }, 50)
+    }, 50)
 
   })
 })
