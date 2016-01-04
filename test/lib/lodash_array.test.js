@@ -1,6 +1,6 @@
 var _ = require('../../');
 
-describe('test/lodash.test.js', function () {
+describe('test/lodash_array.test.js', function () {
   describe('Arrays', function () {
     describe('#chunk', function () {
       it('should split the Array into chunks', function () {
