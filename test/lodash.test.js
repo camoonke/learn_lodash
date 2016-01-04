@@ -1,8 +1,13 @@
-var lodash = require('../lodash');
+var lodash = require('../lib/lodash');
 var should = require('should')
 
 describe('test/lodash.test.js', function () {
-  it('should give me 5', function () {
-    lodash.giveme5().should.eql(5)
-  })
+	describe('Arrays', function () {
+		describe('#chunk', function () {
+			it('should split the Array into chunks', function () {
+			  	var arr = ['a', 'b', 'c', 'd', 'e', 'f']
+			    lodash.chunk(arr, 2).should.eql([['a', 'b'], ['c', 'd'], ['e', 'f']])
+			})
+		})
+	})
 })
