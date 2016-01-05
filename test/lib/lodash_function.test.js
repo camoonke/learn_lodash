@@ -55,4 +55,18 @@ describe('test/lib/lodash_function.test.js', function () {
 
     count.should.eql(2)
   })
+
+  it('#bind', function () {
+    var add = function (a, b, c) {
+      return a + b + c + this.d
+    }
+
+    var obj = {
+      d: 1
+    }
+
+    var wraped = _.bind(add, obj, 1, 1)
+
+    wraped(1).should.eql(4)
+  })
 })
