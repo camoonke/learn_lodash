@@ -37,5 +37,27 @@ describe('test/lodash_array.test.js', function () {
           .should.eql([1, 3])
       })
     })
+
+    describe('#drop', function () {
+      it('_.drop([1, 2, 3])', function () {
+        _.drop([1, 2, 3])
+          .should.eql([2, 3])
+      })
+
+      it('_.drop([1, 2, 3], 2)', function () {
+        _.drop([1, 2, 3], 2)
+          .should.eql([3])
+      })
+      
+      it('_.drop([1, 2, 3], 5)', function () {
+        _.drop([1, 2, 3], 5)
+          .should.eql([])
+      })
+
+      it('_.drop([1, 2, 3], 0)', function () {
+        _.drop([1, 2, 3], 0)
+          .should.eql([1, 2, 3])
+      })
+    })
   })
 })
