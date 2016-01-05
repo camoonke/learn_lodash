@@ -59,5 +59,27 @@ describe('test/lodash_array.test.js', function () {
           .should.eql([1, 2, 3])
       })
     })
+
+    describe('#dropRight', function () {
+      it('_.dropRight([1, 2, 3])', function () {
+        _.dropRight([1, 2, 3])
+          .should.eql([1, 2])
+      })
+
+      it('_.dropRight([1, 2, 3], 2)', function () {
+        _.dropRight([1, 2, 3], 2)
+          .should.eql([1])
+      })
+      
+      it('_.dropRight([1, 2, 3], 5)', function () {
+        _.dropRight([1, 2, 3], 5)
+          .should.eql([])
+      })
+
+      it('_.dropRight([1, 2, 3], 0)', function () {
+        _.dropRight([1, 2, 3], 0)
+          .should.eql([1, 2, 3])
+      })
+    })
   })
 })
