@@ -33,4 +33,26 @@ describe('test/lib/lodash_function.test.js', function () {
     ['6', '8', '10'].map(_.ary(parseInt))
       .should.eql([6, NaN, 2]);
   })
+
+  it('#before', function () {
+    var count = 0;
+    var func = function () {
+      count++;
+    }
+
+    var wraped = _.before(3, func);
+
+    wraped()
+    wraped()
+
+    count.should.eql(2)
+
+    wraped()
+
+    count.should.eql(2)
+
+    wraped();
+
+    count.should.eql(2)
+  })
 })
