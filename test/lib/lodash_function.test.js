@@ -139,4 +139,24 @@ describe('test/lib/lodash_function.test.js', function () {
     var bound = _.bindKey(object, 'greet', _, '!');
     bound('hi').should.eql('hiya fred!');
   })
+
+  it('#curry', function () {
+    var abc = function(a, b, c) {
+      return [a, b, c];
+    };
+
+    var curried = _.curry(abc);
+
+    curried(1)(2)(3)
+      .should.eql([1, 2, 3])
+
+    curried(1, 2)(3)
+      .should.eql([1, 2, 3])
+
+    curried(1, 2, 3).should.eql([1, 2, 3]);
+
+    // using placeholders
+    curried(1)(_, 3)(2).should.eql([1, 2, 3]);
+
+  })
 })
