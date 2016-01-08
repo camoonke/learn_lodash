@@ -69,4 +69,53 @@ describe('test/lib/lodash_function.test.js', function () {
 
     wraped(1).should.eql(4)
   })
+
+  describe('#bindAll', function () {
+    it('should bind all methods', function () {
+      var obj = {
+        name: 'kate',
+        fn1: function () {
+          return this.name
+        },
+        fn2: function () {
+          return this.name
+        }
+      }
+
+      var fn1 = obj.fn1;
+
+      'kate'.should.not.eql(fn1())
+
+      _.bindAll(obj)
+
+      var fn1 = obj.fn1;
+      var fn2 = obj.fn2;
+
+      fn1().should.eql('kate')
+      fn2().should.eql('kate')
+
+    })
+
+    it('should bind specified methods', function () {
+      var obj = {
+        name: 'kate',
+        fn1: function () {
+          return this.name
+        },
+        fn2: function () {
+          return this.name
+        }
+      }
+
+      _.bindAll(obj, ['fn1'])
+
+      var fn1 = obj.fn1;
+      var fn2 = obj.fn2;
+
+      fn1().should.eql('kate')
+      'kate'.should.not.eql(fn2())
+    })
+
+
+  })
 })
