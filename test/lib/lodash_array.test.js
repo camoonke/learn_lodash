@@ -102,7 +102,7 @@ describe('test/lodash_array.test.js', function () {
 
       var objects = [
           {'a': {'b': {'c': false } } },
-          {'a': {'b': {'c': 0 } } }
+          {'a': {'b': {'c': 1 } } }
         ]
       it('_.dropRightWhile(objects, [\'a\', \'b\', \'c\'])', function () {
         _.dropRightWhile(objects, ['a', 'b', 'c'])
