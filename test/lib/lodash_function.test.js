@@ -118,4 +118,25 @@ describe('test/lib/lodash_function.test.js', function () {
 
 
   })
+
+  it('#bindKey', function () {
+    var object = {
+      'user': 'fred',
+      'greet': function(greeting, punctuation) {
+        return greeting + ' ' + this.user + punctuation;
+      }
+    };
+
+    var bound = _.bindKey(object, 'greet', 'hi');
+    bound('!').should.eql('hi fred!');
+
+    object.greet = function(greeting, punctuation) {
+      return greeting + 'ya ' + this.user + punctuation;
+    };
+
+    bound('!').should.eql('hiya fred!');
+
+    var bound = _.bindKey(object, 'greet', _, '!');
+    bound('hi').should.eql('hiya fred!');
+  })
 })

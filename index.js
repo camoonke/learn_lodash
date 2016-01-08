@@ -15,4 +15,6 @@ for (var i = 0; i < functionArr.length; i++) {
   }
 }
 
+lodash.isLearnLodash = true; // 通过这个变量来判断是否自身。_.bindKey 中会使用自身作为占位符
+
 exports = module.exports = lodash;
