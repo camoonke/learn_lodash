@@ -81,5 +81,33 @@ describe('test/lodash_array.test.js', function () {
           .should.eql([1, 2, 3])
       })
     })
+
+    describe('#dropRightWhile', function () {
+      it('_.dropRightWhile([1, 2, 3], function', function () {
+        _.dropRightWhile([1, 2, 3], function (n) {
+          return n > 1
+        })
+          .should.eql([1])
+      })
+
+      var users = [
+        { 'user': 'barney',  'active': true },
+        { 'user': 'fred',    'active': false },
+        { 'user': 'pebbles', 'active': false }
+      ]
+      it('_.dropRightWhile(users, \'active\')', function () {
+        _.dropRightWhile(users, 'active')
+          .should.eql(users)
+      })
+
+      var objects = [
+          {'a': {'b': {'c': false } } },
+          {'a': {'b': {'c': 0 } } }
+        ]
+      it('_.dropRightWhile(objects, [\'a\', \'b\', \'c\'])', function () {
+        _.dropRightWhile(objects, ['a', 'b', 'c'])
+          .should.eql([objects[0]])
+      })
+    })
   })
 })
