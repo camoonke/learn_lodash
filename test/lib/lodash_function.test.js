@@ -159,4 +159,20 @@ describe('test/lib/lodash_function.test.js', function () {
     curried(1)(_, 3)(2).should.eql([1, 2, 3]);
 
   })
+
+  it('#curryRight', function () {
+    var abc = function(a, b, c) {
+      return [a, b, c];
+    };
+
+    var curried = _.curryRight(abc);
+
+    curried(3)(2)(1).should.eql([1, 2, 3])
+
+    curried(2, 3)(1).should.eql([1, 2, 3])
+
+    curried(1, 2, 3).should.eql([1, 2, 3])
+
+    curried(3)(1, _)(2).should.eql([1, 2, 3])
+  })
 })
