@@ -222,7 +222,22 @@ describe('test/lib/lodash_function.test.js', function () {
         done()
       }, 150)
     })
+  })
 
+  it('#defer', function (done) {
+    var count = 0;
+    function add(a, b, c) {
+      count = count + a + b + c;
+    }
 
+    _.defer(add, 1, 1, 1);
+
+    count.should.eql(0)
+
+    setTimeout(function () {
+      count.should.eql(3)
+      done()
+    }, 10)
   })
 })
+
