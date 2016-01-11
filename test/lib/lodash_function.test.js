@@ -175,4 +175,54 @@ describe('test/lib/lodash_function.test.js', function () {
 
     curried(3)(1, _)(2).should.eql([1, 2, 3])
   })
+
+  describe('#debounce', function () {
+    it('should only add 1', function (done) {
+      var count = 0;
+      function add() {
+        count++;
+      }
+
+      var fn = _.debounce(add, 100);
+
+      fn()
+      fn()
+      count.should.eql(0)
+
+      setTimeout(function () {
+        fn()
+      }, 20)
+
+      setTimeout(function () {
+        count.should.eql(0)
+      }, 110)
+
+      setTimeout(function () {
+        count.should.eql(1)
+        done()
+      }, 150)
+    })
+
+    it('should can be canceled', function (done) {
+      var count = 0;
+      function add() {
+        count++;
+      }
+
+      var fn = _.debounce(add, 100);
+
+      fn()
+      fn()
+      fn()
+      count.should.eql(0)
+      fn.cancel()
+
+      setTimeout(function () {
+        count.should.eql(0)
+        done()
+      }, 150)
+    })
+
+
+  })
 })
