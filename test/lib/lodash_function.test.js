@@ -239,5 +239,22 @@ describe('test/lib/lodash_function.test.js', function () {
       done()
     }, 10)
   })
+
+  it('#delay', function (done) {
+    var count = 0;
+
+    var add = function (a) {
+      count = count + a
+    }
+
+    _.delay(add, 30, 10)
+
+    count.should.eql(0);
+
+    setTimeout(function () {
+      count.should.eql(10)
+      done()
+    }, 50)
+  })
 })
 
