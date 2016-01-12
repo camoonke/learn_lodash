@@ -269,5 +269,18 @@ describe('test/lib/lodash_function.test.js', function () {
     var addSquare = _.flow(add, square);
     addSquare(1, 2).should.eql(9)
   })
+
+  it('#flowRight', function () {
+    function add(a, b) {
+      return a + b;
+    }
+
+    function square(n) {
+      return n * n;
+    }
+
+    var addSquare = _.flowRight(square, add);
+    addSquare(1, 2).should.eql(9)
+  })
 })
 
