@@ -256,5 +256,18 @@ describe('test/lib/lodash_function.test.js', function () {
       done()
     }, 50)
   })
+
+  it('#flow', function () {
+    function add(a, b) {
+      return a + b;
+    }
+
+    function square(n) {
+      return n * n;
+    }
+
+    var addSquare = _.flow(add, square);
+    addSquare(1, 2).should.eql(9)
+  })
 })
 
