@@ -356,5 +356,21 @@ describe('test/lib/lodash_function.test.js', function () {
     ;[1, 2, 3, 4, 5, 6].filter( _.negate(isEven))
       .should.eql([1, 3, 5]);
   })
+
+  it('#once', function () {
+    var count = 0;
+
+    function _add(num) {
+      count += num;
+    }
+
+    var add = _.once(_add);
+
+    add(5)
+    count.should.eql(5);
+    add(10)
+    count.should.eql(5)
+
+  })
 })
 
