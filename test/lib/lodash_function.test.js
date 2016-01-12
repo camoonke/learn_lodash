@@ -329,5 +329,23 @@ describe('test/lib/lodash_function.test.js', function () {
       fibonacci(1000)
     })
   })
+
+  it('#modArgs', function () {
+    function doubled(n) {
+      return n * 2;
+    }
+
+    function square(n) {
+      return n * n;
+    }
+
+    var modded = _.modArgs(function(x, y) {
+      return [x, y];
+    }, square, doubled);
+
+    modded(1, 2).should.eql([1, 4]);
+
+    modded(5, 10).should.eql([25, 20]);
+  })
 })
 
