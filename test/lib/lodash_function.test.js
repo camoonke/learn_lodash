@@ -282,5 +282,52 @@ describe('test/lib/lodash_function.test.js', function () {
     var addSquare = _.flowRight(square, add);
     addSquare(1, 2).should.eql(9)
   })
+
+  describe('#memoize', function () {
+    it('should work', function () {
+      var m = _.memoize(function (num) {
+        return num + 1;
+      })
+
+      m(1).should.eql(2);
+      m(1).should.eql(2);
+
+      ('1' in m.cache).should.true()
+    })
+
+    it('should work with resolver', function () {
+      var m = _.memoize(function (a, b) {
+        return a + b;
+      }, function (a, b) {
+        return a + b;
+      })
+
+      m(1, 2).should.eql(3)
+      m(1, 2).should.eql(3)
+      ;('3' in m.cache).should.true()
+
+    })
+
+    it('should bind to memoized function', function () {
+      var m = _.memoize(function (num) {
+        return this.base + num
+      })
+
+      m.base = 10;
+
+      m(1).should.eql(11)
+    })
+
+    it('should fast', function () {
+      var fibonacci = _.memoize(function (n) {
+        if (n === 0 || n === 1) {
+          return n;
+        }
+        return fibonacci(n - 1) + fibonacci(n - 2)
+      })
+
+      fibonacci(1000)
+    })
+  })
 })
 
