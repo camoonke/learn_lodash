@@ -347,5 +347,14 @@ describe('test/lib/lodash_function.test.js', function () {
 
     modded(5, 10).should.eql([25, 20]);
   })
+
+  it('#negate', function () {
+    function isEven(n) {
+      return n % 2 == 0;
+    }
+
+    ;[1, 2, 3, 4, 5, 6].filter( _.negate(isEven))
+      .should.eql([1, 3, 5]);
+  })
 })
 
