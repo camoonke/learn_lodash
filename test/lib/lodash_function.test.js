@@ -385,5 +385,18 @@ describe('test/lib/lodash_function.test.js', function () {
     var greetFred = _.partial(greet, _, 'fred');
     greetFred('hi').should.eql('hi fred');
   })
+
+  it('#partialRight', function () {
+    var greet = function(greeting, name) {
+      return greeting + ' ' + name;
+    };
+
+    var greetFred = _.partialRight(greet, 'fred');
+    greetFred('hi').should.eql('hi fred');
+
+    // using placeholders
+    var sayHelloTo = _.partialRight(greet, 'hello', _);
+    sayHelloTo('fred').should.eql('hello fred');
+  })
 })
 
