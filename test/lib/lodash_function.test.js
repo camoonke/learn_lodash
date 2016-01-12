@@ -372,5 +372,18 @@ describe('test/lib/lodash_function.test.js', function () {
     count.should.eql(5)
 
   })
+
+  it('#partial', function () {
+    var greet = function(greeting, name) {
+      return greeting + ' ' + name;
+    };
+
+    var sayHelloTo = _.partial(greet, 'hello');
+    sayHelloTo('fred').should.eql('hello fred');
+
+    // using placeholders
+    var greetFred = _.partial(greet, _, 'fred');
+    greetFred('hi').should.eql('hi fred');
+  })
 })
 
