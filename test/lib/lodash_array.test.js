@@ -16,6 +16,14 @@ describe('test/lodash_array.test.js', function () {
       })
     })
 
+    describe('#concat', function () {
+      it('_.concat(array, 2, [3], [[4]])', function () {
+        var array = [1]
+        _.concat(array, 2, [3], [[4]])
+          .should.eql([1, 2, 3, [4]])
+      })
+    })
+
     describe('#difference', function () {
       it('_.difference()', function () {
         _.difference()
