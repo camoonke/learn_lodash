@@ -117,5 +117,93 @@ describe('test/lodash_array.test.js', function () {
           .should.eql([objects[0]])
       })
     })
+
+    describe('#fill', function () {
+      it('_.fill([1, 2, 3], \'a\')', function () {
+        _.fill([1, 2, 3], 'a')
+          .should.eql(['a', 'a', 'a'])
+      })
+
+      it('_.fill(Array(3), 2)', function () {
+        _.fill(Array(3), 2)
+          .should.eql([2, 2, 2])
+      })
+
+      it('_.fill([4, 6, 8, 10], \'*\', 1, 3)', function () {
+        _.fill([4, 6, 8, 10], '*', 1, 3)
+          .should.eql([4, '*', '*', 10])
+      })
+    })
+
+    describe('#findIndex', function () {
+      var users = [
+        { 'user': 'barney',  'active': false },
+        { 'user': 'fred',    'active': false },
+        { 'user': 'pebbles', 'active': true }
+      ];
+
+      it('_.findIndex(users, function(o) { return o.user == \'barney\'; })', function () {
+        _.findIndex(users, function(o) { return o.user == 'barney'; })
+          .should.eql(0)
+      })
+
+      it('_.findIndex(users, \'active\')', function () {
+        _.findIndex(users, 'active')
+          .should.eql(2)
+      })
+    })
+
+    describe('#flatten', function () {
+      it('_.flatten([1, [2, 3, [4]]])', function () {
+        _.flatten([1, [2, 3, [4]]])
+          .should.eql([1, 2, 3, [4]])
+      })
+    })
+
+    describe('#flattenDeep', function () {
+      it('_.flattenDeep([1, [2, 3, [4]]])', function () {
+        _.flattenDeep([1, [2, 3, [4]]])
+          .should.eql([1, 2, 3, 4])
+      })
+    })
+
+    describe('#fromPairs', function () {
+      it('_.fromPairs([[\'fred\', 30], [\'barney\', 40]])', function () {
+        _.fromPairs([['fred', 30], ['barney', 40]])
+          .should.eql({ 'fred': 30, 'barney': 40 })
+      })
+    })
+
+    describe('#head', function () {
+      it('_.head([1, 2, 3])', function () {
+        _.head([1, 2, 3])
+          .should.eql(1)
+      })
+
+      it('_.head([])', function () {
+        var should = require('should')
+         should(_.head([])).be.undefined
+      })
+    })
+
+    describe('#indexOf', function () {
+      it('_.indexOf([1, 2, 1, 2], 2)', function () {
+        _.indexOf([1, 2, 1, 2], 2)
+          .should.eql(1)
+      })
+
+      it('_.indexOf([1, 2, 1, 2], 2, 2)', function () {
+        _.indexOf([1, 2, 1, 2], 2, 2)
+          .should.eql(3)
+      })
+    })
+
+    describe('#initial', function () {
+      it('_.initial([1, 2, 3])', function () {
+        _.initial([1, 2, 3])
+          .should.eql([1, 2])
+      })
+    })
+
   })
 })
