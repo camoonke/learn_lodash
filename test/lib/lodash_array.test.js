@@ -181,8 +181,7 @@ describe('test/lodash_array.test.js', function () {
       })
 
       it('_.head([])', function () {
-        var should = require('should')
-         should(_.head([])).be.undefined
+        (_.head([]) === void 0).should.true() 
       })
     })
 
