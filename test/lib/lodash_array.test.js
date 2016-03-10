@@ -227,5 +227,22 @@ describe('test/lodash_array.test.js', function () {
       })
     })
 
+    describe('#lastIndexOf', function () {
+      it('_.lastIndexOf([1, 2, 1, 2], 2)', function () {
+        _.lastIndexOf([1, 2, 1, 2], 2)
+          .should.eql(3)
+      })
+
+      it('_.lastIndexOf([1, 2, 1, 2], 2, 2)', function () {
+        _.lastIndexOf([1, 2, 1, 2], 2, 2)
+          .should.eql(1)
+      })
+
+      it('_.lastIndexOf([1, 2, 1, 2])', function () {
+        _.lastIndexOf([1, 2, 1, 2])
+          .should.eql(-1)
+      })
+    })
+
   })
 })
