@@ -244,5 +244,15 @@ describe('test/lodash_array.test.js', function () {
       })
     })
 
+    describe('#pull', function () {
+      var array = [1, 2, 3, 1, 2, 3]
+      it('_.pull(array, 2, 3)', function () {
+        // to do: how to change argument array
+        // ((_.pull(array, 2, 3)).toString() === array.toString()).should.true()
+        _.pull(array, 2, 3)
+          .should.eql([1, 1])
+      })
+    })
+
   })
 })
