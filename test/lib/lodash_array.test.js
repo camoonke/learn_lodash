@@ -204,5 +204,17 @@ describe('test/lodash_array.test.js', function () {
       })
     })
 
+    describe('#join', function () {
+      it('_.join([1, 2, 3], \'~\')', function () {
+        _.join([1, 2, 3], '~')
+          .should.eql('1~2~3')
+      })
+
+      it('_.join([1, 2, 3])', function () {
+        _.join([1, 2, 3])
+          .should.eql('1,2,3')
+      })
+    })
+
   })
 })
