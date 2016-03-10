@@ -216,5 +216,16 @@ describe('test/lodash_array.test.js', function () {
       })
     })
 
+    describe('#last', function () {
+      it('_.last([1, 2, 3])', function () {
+        _.last([1, 2, 3])
+          .should.eql(3)
+      })
+
+      it('_.last([])', function () {
+        (_.last([]) === void 0).should.true() 
+      })
+    })
+
   })
 })
